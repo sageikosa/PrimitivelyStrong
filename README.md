@@ -239,3 +239,7 @@ Entity Framework Integration
 The samples code has both a DbContext and a DbContextFactory to demonstrate how to
 use the generated strong types with Entity Framework Core using the conventions features
 and with migrations accessed from external tools like "dotnet ef".
+
+To use at "runtime" make sure the Add...Configurators extension methods have been called
+in application setup.  When using with the dotnet ef tool, make sure any DbContextFactory calls the 
+...Dependencies.Get...Configurators methods (concatenated, as in the sample code).
