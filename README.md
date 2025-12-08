@@ -53,7 +53,7 @@ and gives me some heads-up ahead of time.
 Also, there is an implicit conversion to string, but no conversion from string to the strong key type,
 this is to avoid accidental conversions from string to the strong key type, which might negate 
 some of the compile-time type safety of the strong keys.  You need to work to get strong,
-but can slack back into strings easily for logging and console output.
+but can slack back into strings easily for logging, console output and display data-binding.
 
 ```csharp
 [StrongKeys(IsUnicodeStorage = false, IsCaseSensitive = false)]
