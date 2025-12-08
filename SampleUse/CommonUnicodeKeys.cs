@@ -3,7 +3,7 @@
 namespace SampleUse;
 
 // declare partial structs to simplify rename refactoring (if desired)
-// you can work without these, but renaming the constants in CommonKeys
+// you can work without these, but renaming the constants in CommonUnicodeKeys
 // ...will require finding and renaming the generated struct references
 // ...without refactor support
 
