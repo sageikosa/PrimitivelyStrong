@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- to demonstrate using with EF DbContexts -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Reference the source generator projects as analyzers   -->
+    <ProjectReference Include="..\PrimitivelyStrong.Generators\PrimitivelyStrong.Generators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+    <ProjectReference Include="..\PrimitivelyStrong.Generators.Attributes\PrimitivelyStrong.Generators.Attributes.csproj" ReferenceOutputAssembly="true" OutputItemType="Analyzer" />
+    <ProjectReference Include="..\PrimitivelyStrong.Support\PrimitivelyStrong.Support.csproj" />
+  </ItemGroup>
+
+</Project>

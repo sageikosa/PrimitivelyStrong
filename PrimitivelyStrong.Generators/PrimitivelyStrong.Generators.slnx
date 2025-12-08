@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../PrimitivelyStrong.Generators.Attributes/PrimitivelyStrong.Generators.Attributes.csproj" />
+  <Project Path="../PrimitivelyStrong.Support/PrimitivelyStrong.Support.csproj" />
+  <Project Path="../SampleUse/SampleUse.csproj" />
+  <Project Path="PrimitivelyStrong.Generators.csproj" />
+</Solution>
