@@ -7,11 +7,12 @@ Primitive obsession refers to the overuse of basic data types
 (like strings, integers, and booleans) to represent complex concepts in your code.  The 
 primitive types float around in data structures and function signatures, 
 complicating validation, behavior, and understanding.  The compiler cannot help check
-that the value used is mean to be an identity or key for the domain.
+that the provenance of the value used at a call-site is intended as an identity or key for the domain.
 
-I had worked around this before with strongly-typed structs and classes, 
+I had worked around this in the _before-times_ with strongly-typed structs and classes, 
 using id and key fields carried in the structs to represent the identity 
-of the object.
+of the object.  I allowed the records to be mostly empty except for the key and id fields under 
+ciscumstances where the object was just a carrier for the identity.
 
 I researched several bits of postings on the interwebs, and worked my way through a few
 iterations of my own framework to help me get rid of primitive obsession in my code.
@@ -47,12 +48,12 @@ Currently, the generated code throw exceptions when the length of the string exc
 maximum length when called at runtime in a constructor or init accessor, I've toyed with making
 a static analyzer to inspect and throw compile-time errors, but it's just a bit more than
 I want to tackle at the moment.  I'm willing to entertain pull requests if anyone is interested,
-and gives me some heads up ahead of time.
+and gives me some heads-up ahead of time.
 
 Also, there is an implicit conversion to string, but no conversion from string to the strong key type,
 this is to avoid accidental conversions from string to the strong key type, which might negate 
-some of the compile-time type safety of the strong strings.  You need to work to get strong,
-but can slack back off to strings easily for logging and console output.
+some of the compile-time type safety of the strong keys.  You need to work to get strong,
+but can slack back into strings easily for logging and console output.
 
 ```csharp
 [StrongKeys(IsUnicodeStorage = false, IsCaseSensitive = false)]
@@ -114,7 +115,7 @@ Entity Framework configuration of the key type.
     public class SampleKeyConfigurator() : ConfigureKeyBase<SampleKey>(v => v.KeyVal, v => new SampleKey(v), 16);
 ```
 
-Also, extension methods are generated to help with dependency injection setuup.
+Also, extension methods are generated to help with dependency injection setup.
 ```csharp
     public static class SampleKeysDependencies
     {
