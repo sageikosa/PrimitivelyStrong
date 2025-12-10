@@ -12,7 +12,7 @@ that the provenance of the value used at a call-site is intended as an identity 
 I had worked around this in the _before-times_ with strongly-typed structs and classes, 
 using id and key fields carried in the structs to represent the identity 
 of the object.  I allowed the records to be mostly empty except for the key and id fields under 
-ciscumstances where the object was just a carrier for the identity.
+circumstances where the object was just a carrier for the identity.
 
 I researched several bits of postings on the interwebs, and worked my way through a few
 iterations of my own framework to help me get rid of primitive obsession in my code.
