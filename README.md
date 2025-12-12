@@ -1,5 +1,5 @@
 Primitively.Strong
-------------------
+==================
 Getting rid of primitive obsession in your C# code.
 
 Once I discovered the concept of "primitive obsession" in code, I realized I had it myself. 
