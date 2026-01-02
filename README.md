@@ -20,6 +20,8 @@ iterations of my own framework to help me get rid of primitive obsession in my c
 What is presented in this repository is a distillation of that research and experimentation
 in sample code form that hopefully will be useful to others.
 
+A similar library which I am sure provided some inspiration when I went full Roslyn generation: [Andrew Lock's StronglyTypedId](https://github.com/andrewlock/StronglyTypedId).
+
 The solution file has 3 mostly important projects, and one sample project to demonstrate use.
 
 - [PrimitiveyStrong.Generators.Attributes](https://github.com/sageikosa/PrimitivelyStrong/tree/main/PrimitivelyStrong.Generators.Attributes)
