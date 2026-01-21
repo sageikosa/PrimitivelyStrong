@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PrimitivelyStrong.Support;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace SampleUse;
 
@@ -11,13 +12,22 @@ namespace SampleUse;
 /// <param name="configurators">A collection of property configurators used to customize model property conventions during context initialization.
 /// Cannot be null.</param>
 public class SampleDbContext(
-    IEnumerable<IPropertyConfigurator> configurators
+    IEnumerable<IPropertyConfigurator> configurators,
+    string caseSensitiveCollation,
+    string caseInsensitiveCollation
     ) : DbContext
 {
     protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
     {
         foreach (var _conf in configurators)
         {
+            if (_conf is IPropertyCollation _propColl)
+            {
+                // stitch collation from connection into property configurator
+                _propColl.Collation = _propColl.IsCaseSensitive
+                    ? caseSensitiveCollation
+                    : caseInsensitiveCollation;
+            }
             _conf.ConfigureProperties(configurationBuilder);
         }
         base.ConfigureConventions(configurationBuilder);

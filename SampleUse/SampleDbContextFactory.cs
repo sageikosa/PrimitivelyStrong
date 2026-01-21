@@ -18,6 +18,8 @@ public class SampleDbContextFactory
             CommonUnicodeKeysDependencies.GetCommonUnicodeKeysConfigurators()
             .Concat(SampleKeysDependencies.GetSampleKeysConfigurators())
             .Concat(SampleIDsDependencies.GetSampleIDsConfigurators())
-            .Concat(SampleLongIDsDependencies.GetSampleLongIDsConfigurators())
+            .Concat(SampleLongIDsDependencies.GetSampleLongIDsConfigurators()),
+            @"SQL_Latin1_General_CP1_CS_AS",
+            @"SQL_Latin1_General_CP1_CI_AS"
             );
 }

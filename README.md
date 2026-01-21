@@ -35,6 +35,15 @@ generated code, so needs to be referenced in the projects that use the generated
 
 *SampleUse* is a net10.0 project that demonstrates how to use the framework.
 
+Update 2026-01-21 
+-----------------
+- added support for case-sensitive and case-insensitive annotations to percolate to database
+- `ConfigureKeyBase` implements `IPropertyCollation` to support case-sensitivity configuration in EF Core
+- `StrongKeyGenerator` updated to generate code to support case-sensitivity configuration in EF Core
+- `SampleDbContext` updated to demonstrate case-sensitivity configuration in EF Core
+- `SampleDbContextFactory` updated to demonstrate case-sensitivity configuration in EF Core
+
+
 StrongKeys
 ----------
 When this attribute is placed on a static class, the names of all const int fields in 

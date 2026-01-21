@@ -200,9 +200,19 @@ public class StrongKeyGenerator : IIncrementalGenerator
             sb.Append(_key.Item1);
             sb.Append(@"(v), ");
             sb.Append(_key.Item2);
-            if (strongKeys.IsUnicodeStorage)
+            if (strongKeys.IsCaseSensitive || strongKeys.IsUnicodeStorage)
             {
-                sb.AppendLine(@"){ public override bool IsUnicode => true; }");
+                sb.AppendLine(@")");
+                sb.AppendLine(@"    {");
+                if (strongKeys.IsCaseSensitive)
+                {
+                    sb.AppendLine(@"        public override bool IsCaseSensitive => true;");
+                }
+                if (strongKeys.IsUnicodeStorage)
+                {
+                    sb.AppendLine(@"        public override bool IsUnicode => true;");
+                }
+                sb.AppendLine(@"    }");
             }
             else
             {

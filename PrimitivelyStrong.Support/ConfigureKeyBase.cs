@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System.Linq.Expressions;
@@ -23,15 +24,25 @@ public abstract class ConfigureKeyBase<TStrong>(
     ) : ValueConverter<TStrong, string>(
         convertToProviderExpression,
         convertFromProviderExpression
-        ), IPropertyConfigurator
+        ), IPropertyCollation
     where TStrong : struct
 {
+    public virtual bool IsCaseSensitive => false;
     public virtual bool IsUnicode => false;
 
+    public string Collation { get; set; } = string.Empty;
+
     public PropertiesConfigurationBuilder ConfigureProperties(ModelConfigurationBuilder builder)
-        => builder
+        => string.IsNullOrWhiteSpace(Collation)
+        ? builder
         .Properties<TStrong>()
         .AreUnicode(IsUnicode)
         .HaveMaxLength(maxLength)
-        .HaveConversion(GetType());
+        .HaveConversion(GetType())
+        : builder
+        .Properties<TStrong>()
+        .AreUnicode(IsUnicode)
+        .HaveMaxLength(maxLength)
+        .HaveConversion(GetType())
+        .HaveAnnotation(RelationalAnnotationNames.Collation, Collation);
 }
